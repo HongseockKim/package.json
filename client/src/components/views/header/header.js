@@ -7,6 +7,7 @@ const useStyle = makeStyles({
         maxWidth :"1200px",
         minHeight:"200px",
         background:"#333",color:"#fff",
+        textAlign:"center",lineHeight:"200px",
     }
 });
 
