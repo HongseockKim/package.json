@@ -8,14 +8,17 @@ const useStyle = makeStyles({
         minHeight:"200px",
         background:"#333",color:"#fff",
         textAlign:"center",lineHeight:"200px",
-    }
+    },
+    header_top:{
+        marginBottom:"50px",
+    },
 });
 
 function Header(){
     const classes  = useStyle();
 
     return(
-        <header>
+        <header className={classes.header_top}>
             <div className={classes.inner}>
                 헤더ddwdwd
             </div>

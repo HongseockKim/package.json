@@ -24,6 +24,9 @@ const useStyles = makeStyles({
     item : {
       boxSizing :"border-box",
     },
+    text:{
+        textAlign:"center",
+    },
 });
 
 
@@ -48,7 +51,7 @@ const useStyles = makeStyles({
             </Header>
             <div>
                 {loadData ? (
-                    <div>
+                    <div className={classes.text}>
                         흠..{loadData.message} 흠..
                     </div>
                 ) : null}
