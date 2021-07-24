@@ -3,7 +3,7 @@ const app = express()
 const port = 3000
 
 app.get('/',(req,res) =>{
-   res.send('하이루')
+   res.send('하이루 이건뭐지')
 });
 
 app.listen(port,()=> console.log(`서버켜짐${port}포트`));
