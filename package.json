@@ -2,18 +2,28 @@
   "name": "react",
   "version": "1.0.0",
   "description": "",
-  "main": "server/index.js",
+  "main": "index.js",
   "scripts": {
-    "start": "node server/index.js",
-    "dev" : "nodemon server/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "backend": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "concurrently \"npm run backend \" \" npm run start --prefix client\""
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1"
+    "concurrently": "^6.2.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.12"
-  }
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HongseockKim/reactproject.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/HongseockKim/reactproject/issues"
+  },
+  "homepage": "https://github.com/HongseockKim/reactproject#readme"
 }
