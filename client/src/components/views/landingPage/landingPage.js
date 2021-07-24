@@ -19,7 +19,7 @@ const useStyles = makeStyles({
     },
     table :{
         border:"1px solid #ccc",
-        borderCollapse : "collapse",
+        borderCollapse : "collapse",background:"#868686"
     },
     item : {
       boxSizing :"border-box",
