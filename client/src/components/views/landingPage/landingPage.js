@@ -33,6 +33,7 @@ const useStyles = makeStyles({
     image_wrap:{
         maxWidth:"600px",margin:"0 auto"
     }
+
 });
 
 
@@ -52,8 +53,12 @@ const useStyles = makeStyles({
     },[]);
 
     return(
+
         <div>
             <div>
+                <div className={classes.btn_wrap}>
+                    <button type={"button"} className={'btn'}>버튼</button>
+                </div>
                 <div className={classes.image_wrap}>
                     <img className={classes.img} src={process.env.PUBLIC_URL + 'img/무제-2.png'} alt=""/>
                 </div>

@@ -5,13 +5,13 @@ import {
     BrowserRouter as Router,
     Switch,
     Route,
-    //Link
 } from "react-router-dom";
 import Header from "../src/components/views/header/header";
 import Footer from "../src/components/views/Footer/footer";
 import LandingPage from "./components/views/landingPage/landingPage";
 import loginPage from "./components/views/loginPage/loginPage";
 import register from "./components/views/RegisterPage/register";
+import Nav from "./components/views/NavBar/nav"
 
 
 
@@ -21,6 +21,9 @@ function App() {
             <GlobalStyle></GlobalStyle>
             <Header></Header>
             <Router>
+                <div className={'nav_wrap'}>
+                    <Nav></Nav>
+                </div>
                 <div className={'main'}>
                     <Switch>
                         <Route exact path="/" component={LandingPage}>

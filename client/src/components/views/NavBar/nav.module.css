@@ -1,0 +1,18 @@
+@charset "UTF-8";
+.nav{
+    background: #fff;
+}
+.lnb_item{
+    display: inline-block;width: calc(100% / 3);
+}
+.lnb_item a{
+    display: block;text-decoration:none;
+
+}
+.lnb_item button{
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 500;
+    color: #333;font-size: 1.1vw;
+    display: block;padding:20px 0;
+    width: 100%;border: none;
+}
