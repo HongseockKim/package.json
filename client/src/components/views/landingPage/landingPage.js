@@ -5,13 +5,16 @@ import TableCell from '@material-ui/core/TableCell';
 import Grid from "@material-ui/core/Grid";
 import {makeStyles} from "@material-ui/core/styles";
 import {Paper, TableBody, TableFooter, TableHead} from "@material-ui/core";
-import Header from "../header/header";
+import "./css/landingpage.css";
+
 
 
 const useStyles = makeStyles({
+    img:{
+        display:'block',width:'100%'
+    },
     root: {
-        grid:1,
-        background:"red",
+        padding:"20px 0"
     },
     paper :{
         padding:20,
@@ -25,8 +28,11 @@ const useStyles = makeStyles({
       boxSizing :"border-box",
     },
     text:{
-        textAlign:"center",
+        textAlign:"center",padding:"20px 0",color:"#fff"
     },
+    image_wrap:{
+        maxWidth:"600px",margin:"0 auto"
+    }
 });
 
 
@@ -47,22 +53,23 @@ const useStyles = makeStyles({
 
     return(
         <div>
-            <Header>
-            </Header>
             <div>
+                <div className={classes.image_wrap}>
+                    <img className={classes.img} src={process.env.PUBLIC_URL + 'img/무제-2.png'} alt=""/>
+                </div>
                 {loadData ? (
                     <div className={classes.text}>
                         흠..{loadData.message} 흠..
                     </div>
                 ) : null}
             </div>
-            <Grid className={classes.root} spacing={3}>
+            <Grid container={true} item spacing={2} className={classes.root} >
                 <Grid className={classes.item} item xs={12} spacing={3}>
                     <Paper className={classes.paper}>
                         xs = 12
                     </Paper>
                 </Grid>
-                <Grid item xs={6} spacing={3}>
+                <Grid item={true} xs={6} spacing={3}>
                     <Paper className={classes.paper}>
                         xs = 6
                     </Paper>

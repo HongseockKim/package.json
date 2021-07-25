@@ -20,7 +20,7 @@ function Header(){
     return(
         <header className={classes.header_top}>
             <div className={classes.inner}>
-                헤더ddwdwd
+                <p>리액트</p>
             </div>
         </header>
     )
