@@ -3,11 +3,11 @@
     background: #fff;
 }
 .lnb_item{
-    display: inline-block;width: calc(100% / 3);
+    display: inline-block;width: calc(100% / 4);
 }
 .lnb_item a{
-    display: block;text-decoration:none;
-
+    display: block;text-decoration:none;color: #333;padding:25px 0;
+    text-align: center;
 }
 .lnb_item button{
     font-family: 'Noto Sans KR', sans-serif;

@@ -14,7 +14,7 @@ const useStyles = makeStyles({
         display:'block',width:'100%'
     },
     root: {
-        padding:"20px 0"
+        padding:"100px 0"
     },
     paper :{
         padding:20,
@@ -42,6 +42,10 @@ const useStyles = makeStyles({
     const [loadData,setLoadData] = useState();
     //랜딩페이지 시작
     useEffect(() => {
+        getData();
+    },[]);
+
+    function getData(){
         axios.get('/api/hello')
             .then(res =>{
                 console.log(res.data);
@@ -49,8 +53,10 @@ const useStyles = makeStyles({
             })
             .catch((err) =>{
                 console.log(err);
-            })
-    },[]);
+            });
+    }
+
+
 
     return(
 
@@ -64,9 +70,10 @@ const useStyles = makeStyles({
                 </div>
                 {loadData ? (
                     <div className={classes.text}>
-                        흠..{loadData.message} 흠..
+                        흠..{loadData.message} 흠..dd
                     </div>
                 ) : null}
+            }
             </div>
             <Grid container={true} item spacing={2} className={classes.root} >
                 <Grid className={classes.item} item xs={12} spacing={3}>

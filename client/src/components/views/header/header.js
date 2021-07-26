@@ -1,6 +1,8 @@
 import React from "react";
 import {makeStyles} from "@material-ui/core/styles";
 
+
+
 const useStyle = makeStyles({
     inner : {
         margin:'0 auto',
@@ -25,5 +27,6 @@ function Header(){
         </header>
     )
 }
+
 
 export default Header;

@@ -11,6 +11,7 @@ import Footer from "../src/components/views/Footer/footer";
 import LandingPage from "./components/views/landingPage/landingPage";
 import loginPage from "./components/views/loginPage/loginPage";
 import register from "./components/views/RegisterPage/register";
+import border from './components/views/border/Border';
 import Nav from "./components/views/NavBar/nav"
 
 
@@ -31,6 +32,8 @@ function App() {
                         <Route exact path="/login" component={loginPage}>
                         </Route>
                         <Route exact path="/register" component={register}>
+                        </Route>
+                        <Route exact path="/border" component={border}>
                         </Route>
                     </Switch>
                 </div>
