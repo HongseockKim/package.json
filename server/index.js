@@ -10,8 +10,18 @@ app.get('/',(req,res) =>{
 
 
 app.get('/api/border',function (req,res){
-   res.send([
-      {num:'1',text:'test1'},{num:'2',text:'test2'}
+   res.json([
+      { id: 1, name: '가' ,text:'월요일입니다',text_2:'화요일입니다',text_3:'수요일입니다',text_4:'목요일입니다',text_5:'금요일입니다',text_6:'토요일입니다',text_7:'일요일입니다'},
+      { id: 2, name: '나' ,text:'밥',text_2:'옷',text_3:'동네',text_4:'밤',text_5:'성남',text_6:'토요일입니다',text_7:'일요일입니다'},
+      { id: 3, name: '다',text:'점심',text_2:'바지',text_3:'서울',text_4:'아침',text_5:'분당',text_6:'토요일입니다',text_7:'일요일입니다' },
+      { id: 4, name: '라',text:'저녁',text_2:'티셔츠',text_3:'문정',text_4:'새벽',text_5:'판교',text_6:'토요일입니다',text_7:'일요일입니다'},
+      { id: 5, name: '라',text:'저녁',text_2:'티셔츠',text_3:'문정',text_4:'새벽',text_5:'판교',text_6:'토요일입니다',text_7:'일요일입니다'},
+      { id: 6, name: '라',text:'저녁',text_2:'티셔츠',text_3:'문정',text_4:'새벽',text_5:'판교',text_6:'토요일입니다',text_7:'일요일입니다'},
+      { id: 7, name: '라',text:'저녁',text_2:'티셔츠',text_3:'문정',text_4:'새벽',text_5:'판교',text_6:'토요일입니다',text_7:'일요일입니다'},
+      { id: 8, name: '라',text:'저녁',text_2:'티셔츠',text_3:'문정',text_4:'새벽',text_5:'판교',text_6:'토요일입니다',text_7:'일요일입니다'},
+      { id: 9, name: '라',text:'저녁',text_2:'티셔츠',text_3:'문정',text_4:'새벽',text_5:'판교',text_6:'토요일입니다',text_7:'일요일입니다'},
+      { id: 10, name: '라',text:'저녁',text_2:'티셔츠',text_3:'문정',text_4:'새벽',text_5:'판교',text_6:'토요일입니다',text_7:'일요일입니다'},
+      { id: 11, name: '라',text:'저녁',text_2:'티셔츠',text_3:'문정',text_4:'새벽',text_5:'판교',text_6:'토요일입니다',text_7:'일요일입니다'}
    ])
 });
 

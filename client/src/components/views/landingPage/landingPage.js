@@ -39,7 +39,7 @@ const useStyles = makeStyles({
 
  function LandingPage(){
     const classes =useStyles();
-    const [loadData,setLoadData] = useState();
+    const [loadData,setLoadData] = useState([]);
     //랜딩페이지 시작
     useEffect(() => {
         getData();
