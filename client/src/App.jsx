@@ -6,14 +6,13 @@ import {
     Switch,
     Route,
 } from "react-router-dom";
-import Header from "../src/components/views/header/header";
-import Footer from "../src/components/views/Footer/footer";
+import Header from "./components/views/header/header";
+import Footer from "./components/views/Footer/footer";
 import LandingPage from "./components/views/landingPage/landingPage";
 import loginPage from "./components/views/loginPage/loginPage";
 import register from "./components/views/RegisterPage/register";
 import border from './components/views/border/Border';
 import Nav from "./components/views/NavBar/nav"
-
 
 
 function App() {
