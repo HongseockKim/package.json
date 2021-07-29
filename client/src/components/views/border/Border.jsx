@@ -11,6 +11,9 @@ import TuiGrid from 'tui-grid';
 import axios from "axios";
 import Sum from "./sum";
 import Hitbit from "./classRender";
+import {Swiper,SwiperSlide} from "swiper/swiper-react.cjs";
+import "swiper/swiper.min.css";
+import Props from "./props";
 
 TuiGrid.setLanguage('ko');
 TuiGrid.applyTheme('default',{
@@ -75,6 +78,12 @@ const borderStyle = makeStyles({
     box_type_2:{
         background:'#8b8b8b'
     },
+    slide:{
+        width:'100%',
+        height:'300px',cursor:'grab',
+        textAlign:'center',lineHeight:'300px',background:"#f6f6f6",
+        boxShadow:'-4px 10px 3px 1px #ccc',borderRadius:'12px'
+    }
 })
 
 
@@ -179,6 +188,17 @@ function Border(){
                         </Paper>
                     </ListItem>
                 </List>
+                <Swiper className={'mySwiper'}
+                        spaceBetween={20}
+                    slidesPerView={3}
+                >
+                    <SwiperSlide className={classes.slide}>Slide 1</SwiperSlide>
+                    <SwiperSlide className={classes.slide}>Slide 2</SwiperSlide>
+                    <SwiperSlide className={classes.slide}>Slide 3</SwiperSlide>
+                    <SwiperSlide className={classes.slide}>Slide 4</SwiperSlide>
+                    <SwiperSlide className={classes.slide}>Slide 5</SwiperSlide>
+                    <SwiperSlide className={classes.slide}>Slide 6</SwiperSlide>
+                </Swiper>
             </Box>
             </>
     )
