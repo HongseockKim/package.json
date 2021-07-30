@@ -14,6 +14,7 @@ import Hitbit from "./classRender";
 import {Swiper,SwiperSlide} from "swiper/swiper-react.cjs";
 import "swiper/swiper.min.css";
 import Props from "./props";
+import Caculater from "./caculater";
 
 TuiGrid.setLanguage('ko');
 TuiGrid.applyTheme('default',{
@@ -140,6 +141,8 @@ function Border(){
     },[])
     const classes = borderStyle();
     const datas = new touastUi(data,column,option);
+
+
     return(
             <>
             <Box maxWidth={1200} mt={3} mx={'auto'} py={2} className={classes.box} borderRadius={6} boxShadow={3}>
@@ -166,6 +169,7 @@ function Border(){
                 <Box p={5}>
                     <Hitbit></Hitbit>
                 </Box>
+                <Caculater></Caculater>
                 <List className={classes.border_list}>
                     <ListItem className={classes.border_list_item}>
                         <Paper className={classes.papers} elevation={3} >
