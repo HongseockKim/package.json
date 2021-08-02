@@ -13,6 +13,7 @@ import loginPage from "./components/views/loginPage/loginPage";
 import register from "./components/views/RegisterPage/register";
 import border from './components/views/border/Border';
 import Nav from "./components/views/NavBar/nav"
+import axios from "axios";
 
 
 function App() {

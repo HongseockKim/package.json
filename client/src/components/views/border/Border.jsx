@@ -14,7 +14,8 @@ import Hitbit from "./classRender";
 import {Swiper,SwiperSlide} from "swiper/swiper-react.cjs";
 import "swiper/swiper.min.css";
 import Props from "./props";
-import Caculater from "./caculater";
+import Caculater from "./caculater"
+import GetDate from './getDate'
 
 TuiGrid.setLanguage('ko');
 TuiGrid.applyTheme('default',{
@@ -124,7 +125,6 @@ class touastUi{
 
 
 function Border(){
-
     const [data,setdata] = useState();
     useEffect(()=>{
         axios.get('/api/border')
@@ -143,8 +143,13 @@ function Border(){
     const datas = new touastUi(data,column,option);
 
 
+
+
     return(
             <>
+                <Box>
+                    <GetDate></GetDate>
+                </Box>
             <Box maxWidth={1200} mt={3} mx={'auto'} py={2} className={classes.box} borderRadius={6} boxShadow={3}>
                 <Box mt={2} mb={10}>
                     <Editor previewStyle="vertical" height="400px" initialEditType="markdown" initialValue="우와 이게뭐지" />

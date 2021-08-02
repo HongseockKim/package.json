@@ -1,6 +1,25 @@
 const express = require('express')
 const app = express();
 const port = 4000;
+const mysql = require('mysql');
+let connection = mysql.createConnection({
+   host     : 'localhost', //실제로 연결할 데이터베이스의 위치
+   user     : 'gusduswk11',
+   password : 'akgusFL8-892',
+   database : 'mydata' //데이터베이스 이름
+});
+
+
+connection.connect(function (err){
+   if(err){
+      console.log(err)
+   }else{
+      console.log('연결 성공')
+   }
+});
+
+module.exports = connection;
+
 app.use(express.json());
 
 app.get('/',(req,res) =>{
@@ -8,7 +27,15 @@ app.get('/',(req,res) =>{
 });
 
 
-
+app.get('/api/test',function (req,res){
+   const sql = 'select * from border_list';
+   connection.query(sql,function (err,result,fields){
+      if(err){
+         console.log(`쿼리 에러${err}`)
+      }
+      res.send(result)
+   })
+});
 app.get('/api/border',function (req,res){
    res.json([
       { id: 1, name: '가' ,text:'월요일입니다',text_2:'화요일입니다',text_3:'수요일입니다',text_4:'목요일입니다',text_5:'금요일입니다',text_6:'토요일입니다',text_7:'일요일입니다'},
