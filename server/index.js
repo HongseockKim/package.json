@@ -2,11 +2,21 @@ const express = require('express')
 const app = express();
 const port = 4000;
 const mysql = require('mysql');
-let connection = mysql.createConnection({
-   host     : 'localhost', //실제로 연결할 데이터베이스의 위치
-   user     : 'gusduswk11',
-   password : 'akgusFL8-892',
-   database : 'mydata' //데이터베이스 이름
+
+   let connection = mysql.createConnection({
+      host     : 'localhost', //실제로 연결할 데이터베이스의 위치
+      user     : 'gusduswk11',
+      password : 'akgusFL8-892',
+      database : 'mydata' //데이터베이스 이름
+   });
+
+connection.connect(function(err) {
+   if (err) {
+      console.error('error connecting: ' + err.stack);
+      return;
+   }
+
+   console.log('connected as id ' + connection.threadId);
 });
 
 

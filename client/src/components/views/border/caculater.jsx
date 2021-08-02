@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {PureComponent} from 'react';
 import {withStyles,styled} from '@material-ui/core/styles';
 import {Button,Box} from '@material-ui/core'
 
@@ -32,7 +32,7 @@ const MyButton = styled(Button)({
         marginRight:'0px'
     }
 });
-class Caculater extends Component {
+class Caculater extends PureComponent {
     state = {
         Nubers :[
             {id:1,num:1},{id:2,num:2,},{id:3,num:3,}
@@ -55,7 +55,7 @@ class Caculater extends Component {
 
     render() {
         const { classes } = this.props;
-        console.log('리렌더링됨');
+        console.log('케큘레이터 콤퓨넌트');
         return (
             <>
                 <div className={classes.wraps}>

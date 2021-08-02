@@ -9,11 +9,9 @@ import Grid from '@toast-ui/react-grid';
 import 'tui-pagination/dist/tui-pagination.css';
 import TuiGrid from 'tui-grid';
 import axios from "axios";
-import Sum from "./sum";
 import Hitbit from "./classRender";
 import {Swiper,SwiperSlide} from "swiper/swiper-react.cjs";
 import "swiper/swiper.min.css";
-import Props from "./props";
 import Caculater from "./caculater"
 import GetDate from './getDate'
 
@@ -168,9 +166,6 @@ function Border(){
                     onClick={onClick}
                     rowHeaders={['checkbox']}
                 />
-                <Box mt={5} mb={5}>
-                    <Sum></Sum>
-                </Box>
                 <Box p={5}>
                     <Hitbit></Hitbit>
                 </Box>
@@ -197,8 +192,9 @@ function Border(){
                         </Paper>
                     </ListItem>
                 </List>
-                <Swiper className={'mySwiper'}
-                        spaceBetween={20}
+                <Swiper
+                    className={'mySwiper'}
+                    spaceBetween={20}
                     slidesPerView={3}
                 >
                     <SwiperSlide className={classes.slide}>Slide 1</SwiperSlide>

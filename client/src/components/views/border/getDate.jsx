@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {PureComponent} from 'react';
 import {withStyles} from '@material-ui/core/styles';
 import axios from "axios";
 
@@ -18,6 +18,9 @@ const styles  = {
     },
     text:{
        flexBasis: 'calc(100% - 5%)',textAlign:'left'
+    },
+    error_text:{
+       textAlign:"center"
     }
 };
 
@@ -25,18 +28,23 @@ const styles  = {
 
 
 
-class GetDate extends Component {
+class GetDate extends PureComponent {
 
     state = {
-        value :[]
+        value :[],
     }
 componentDidMount() {
         const $this = this;
     axios.get('/api/test')
     .then(function (res){
-        console.log(res.data)
-        const value = res.data;
-        $this.setState({value});
+        if(res){
+            console.log(res.data)
+            const value = res.data;
+            $this.setState({value});
+        }else{
+            $this.setState({value : '현재 이용에 문제가 있습니다'});
+        }
+
     })
     .catch(function (err){
         console.log(err)
@@ -44,16 +52,28 @@ componentDidMount() {
 }
 
     render() {
+        console.log('겟데이터 콤퓨넌드렌더');
         const { classes } = this.props;
-        return (
-            <>
-                <div className={classes.inner}>
-                    {
-                        this.state.value.map((value =><li className={classes.data_list}><span className={classes.num}>{value.id}</span><span className={classes.text}>{value.text}</span></li>))
-                    }
-                </div>
-            </>
-        );
+        if(this.state.value.length > 0){
+            return (
+                <>
+                    <div className={classes.inner}>
+                        {
+                            this.state.value.map((value =><li className={classes.data_list}><span className={classes.num}>{value.id}</span><span className={classes.text}>{value.text}</span></li>))
+                        }
+                    </div>
+                </>
+            );
+        }else{
+            return(
+                <>
+                    <div className={classes.inner}>
+                        <p className={classes.error_text}>죄송합니다 현재 문제가 있습니다.</p>
+                    </div>
+                </>
+            )
+        }
+
     }
 }
 
