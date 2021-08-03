@@ -17,10 +17,18 @@ const styles  = {
       flexBasis:'5%'
     },
     text:{
-       flexBasis: 'calc(100% - 5%)',textAlign:'left'
+       flexBasis: 'calc(100% - 25%)',textAlign:'left'
     },
     error_text:{
        textAlign:"center"
+    },
+    input:{
+       padding:'10px',textAlign:'center',
+      flexBasis:'10%'
+    },
+    delet:{
+        padding:'10px',textAlign:'center',
+       flexBasis:'10%'
     }
 };
 
@@ -29,6 +37,7 @@ const styles  = {
 
 
 class GetDate extends PureComponent {
+    listRef = React.createRef();
 
     state = {
         value :[],
@@ -44,11 +53,15 @@ componentDidMount() {
         }else{
             $this.setState({value : '현재 이용에 문제가 있습니다'});
         }
-
     })
     .catch(function (err){
         console.log(err)
     })
+}
+border_in = (e) => {
+
+    console.log(e.target)
+    console.log(this.props)
 }
 
     render() {
@@ -57,11 +70,18 @@ componentDidMount() {
         if(this.state.value.length > 0){
             return (
                 <>
-                    <div className={classes.inner}>
+                    <ul className={classes.inner} aria-readonly={this.state.value}>
                         {
-                            this.state.value.map((value =><li className={classes.data_list}><span className={classes.num}>{value.id}</span><span className={classes.text}>{value.text}</span></li>))
+                            this.state.value.map((value =>
+                                <li ref={this.listRef}  className={classes.data_list} key={value.id}>
+                                    <span className={classes.num}>{value.id}</span>
+                                    <span className={classes.text}>{value.text}</span>
+                                    <button id={value.id} onClick={this.border_in} type={"button"} className={classes.input}>보기</button>
+                                    <button type={"button"} className={classes.delet}>삭제</button>
+                                </li>
+                            ))
                         }
-                    </div>
+                    </ul>
                 </>
             );
         }else{

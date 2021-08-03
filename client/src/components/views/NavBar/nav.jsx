@@ -27,6 +27,9 @@ function Nav(){
                         <li className={styles.lnb_item}>
                             <Link on to={"/border"} onClick={onloadeddata}>게시물</Link>
                         </li>
+                        <li className={styles.lnb_item}>
+                            <Link on to={"/test"} onClick={onloadeddata}>테스트</Link>
+                        </li>
                     </ul>
                 </nav>
             </Box>

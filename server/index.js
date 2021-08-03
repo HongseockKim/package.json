@@ -10,23 +10,7 @@ const mysql = require('mysql');
       database : 'mydata' //데이터베이스 이름
    });
 
-connection.connect(function(err) {
-   if (err) {
-      console.error('error connecting: ' + err.stack);
-      return;
-   }
 
-   console.log('connected as id ' + connection.threadId);
-});
-
-
-connection.connect(function (err){
-   if(err){
-      console.log(err)
-   }else{
-      console.log('연결 성공')
-   }
-});
 
 module.exports = connection;
 
@@ -35,6 +19,11 @@ app.use(express.json());
 app.get('/',(req,res) =>{
    res.send('하이루 이건뭐지')
 });
+
+app.get('/api/textvalue',(req,res)=>{
+
+})
+
 
 
 app.get('/api/test',function (req,res){

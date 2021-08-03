@@ -12,8 +12,9 @@ import LandingPage from "./components/views/landingPage/landingPage";
 import loginPage from "./components/views/loginPage/loginPage";
 import register from "./components/views/RegisterPage/register";
 import border from './components/views/border/Border';
-import Nav from "./components/views/NavBar/nav"
-import axios from "axios";
+import Nav from "./components/views/NavBar/nav";
+import Test from "./components/views/test/test"
+import TextFild from "./components/views/test/text_fild";
 
 
 function App() {
@@ -34,6 +35,10 @@ function App() {
                         <Route exact path="/register" component={register}>
                         </Route>
                         <Route exact path="/border" component={border}>
+                        </Route>
+                        <Route exact path="/test" component={Test}>
+                        </Route>
+                        <Route exact path="/text_fild" component={TextFild}>
                         </Route>
                     </Switch>
                 </div>

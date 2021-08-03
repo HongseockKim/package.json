@@ -3,7 +3,7 @@
     background: #fff;
 }
 .lnb_item{
-    display: inline-block;width: calc(100% / 4);
+    display: inline-block;width: calc(100% / 5);
 }
 .lnb_item a{
     display: block;text-decoration:none;color: #333;padding:25px 0;
