@@ -1,42 +1,42 @@
-import React, {Component} from 'react';
-import {withStyles , Button} from "@material-ui/core";
-import {Link } from "react-router-dom"
 
-const styles  = {
-    list_item:{
-        listStyle:'none',padding:'10px 0;',
-        boxSizing:'border-box',
-    },
-    text_btn:{
-      '& a':{
-          color:'#fff',
-          textDecoration:'none'
-      }
-    }
-};
+import {IconButton, ListItem} from "@material-ui/core";
+import ClearIcon from '@material-ui/icons/Clear';
+import axios from "axios";
 
-class TestList extends Component {
 
-    render() {
-        const {classes} = this.props;
-        console.log(this.props.ondata.length)
-        const data = this.props.ondata;
-        const count = this.props.count;
-        const num = 0;
-        return (
-            <>
-                {//여기서는 다시 자바스크립트 구문 시작이라 돔파싱 할려면 return 을 꼭해야한다
-                    data && data.map((item) =>{
-                        console.log(item)
-                        return(
-                            <li className={classes.list_item} key={item.id}><span className={classes.num}></span><span className={classes.text}>{item.text}</span></li>
-                        );
-                    })
+function TestList ({id,text,num,updateif}) {
+
+
+    const getId = async (e) => {
+        const id =e.currentTarget.id
+        await  axios({
+            method:'POST',
+            url:'/api/delet',
+            data:{
+                id : id
+            }
+        })
+            .then((res)=>{
+                console.log(res)
+                if(res.data === true){
+                    console.log('성공')
                 }
-                <Button variant="contained" color="primary" className={classes.text_btn} ><Link to={'/text_fild'}>글쓰기</Link></Button>
-            </>
-        );
+            })
+            .catch((err)=>{
+                console.log(err)
+            })
     }
+
+    return (
+        <>
+            <ListItem id={id} style={{padding:'20px 0'}} >
+                <p style={{flexBasis:'95%'}}><span style={{flexBasis:'3%',marginRight:'2%'}}>{num}</span>{text}</p>
+                <div style={{flexBasis:'5%'}}>
+                    <IconButton  id={id} onClick={getId}><ClearIcon style={{fill:'#ff1744'}}/></IconButton>
+                </div>
+            </ListItem>
+        </>
+    );
 }
 
-export default withStyles(styles,{withTheme:true}) (TestList);
+export default TestList;

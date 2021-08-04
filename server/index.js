@@ -1,3 +1,5 @@
+
+
 const express = require('express')
 const app = express();
 const port = 4000;
@@ -20,9 +22,30 @@ app.get('/',(req,res) =>{
    res.send('하이루 이건뭐지')
 });
 
-app.get('/api/textvalue',(req,res)=>{
+app.post('/api/textvalue',(req,res)=>{
+   let data = req.body.text;
+   const sql = "INSERT INTO border_list(text) value (?)";
+   connection.query(sql,data,function (err,result,fields){
+      if(result.affectedRows > 0){
+         res.send('true')
+      }else if(err){
+         console.log(`쿼리 에러${err}`)
+      }
 
+   })
 })
+
+app.post('/api/delet',(req,res)=>{
+   let data = req.body.id;
+   const sql = 'DELETE FROM border_list WHERE id = ?';
+   connection.query(sql,data,function (err,result,fields){
+      if(result.affectedRows > 0){
+         res.send('true')
+      }else if(err){
+         console.log(`쿼리 에러${err}`)
+      }
+   })
+});
 
 
 

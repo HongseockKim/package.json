@@ -1,47 +1,70 @@
 import React, {Component} from 'react';
-import {withStyles} from "@material-ui/core";
-import TestList from "./testList";
+import {withStyles} from "@material-ui/core/styles";
 import axios from "axios";
-const styles  = {
+import TestList from "./testList";
+import {Button, IconButton} from "@material-ui/core";
+import {Link} from "react-router-dom";
+import EditIcon from '@material-ui/icons/Edit';
+const styles = {
     inner:{
-        maxWidth:'1200px',margin:'0 auto',
-        padding:'30px 15px',boxSizing:'border-box',background:'#f1f1f1'
+        maxWidth:'100vw',margin:'0 auto',
+        background:'#fafafa',padding:'20px 10px',boxSizing:'border-box'
+    },
+    border_list:{
+      maxWidth: '90vw',margin:'0 auto',
     }
-};
+}
 class Test extends Component {
     state = {
-        data : []
+        data :[],
+        ready : true
     }
-    componentDidMount() {
-        axios.get('/api/test')
-            .then((res)=>{
+    updateif = () =>{
+        console.log('프롭프롭')
+    }
 
-                this.setState({
-                    data : res.data
-                });
-            })
-            .catch((err)=>{
-                console.log(err)
-            })
+    getData = async (newdata) => {
+       const {data:data} = await axios.get('/api/test')
+        this.setState({data : [...data],ready:false})
+        newdata = this.state.data
     }
+
+
+    componentDidMount() {
+        console.log('컴포넌트 레디')
+        this.getData();
+    }
+
     componentDidUpdate(prevProps, prevState, snapshot) {
-        console.log('www');
-        if(this.state.data.length !== this.state.data.length){
-            this.setState({
-                data : this.state.data
-            })
+        console.log('업데이트')
+
+        if(prevState.data.length !== this.state.data.length){
+            this.getData()
         }
     }
 
     render() {
+        console.log('렌더');
         const {classes} = this.props;
+        const {data,ready} = this.state;
+        console.log({data})
         return (
             <>
-                <div className={classes.inner}>
-                        <TestList
-                            ondata={this.state.data}
-                        />
-                </div>
+             <div className={classes.inner}>
+                 <ul className={classes.border_list}>
+                 {
+                     ready ? "loading" : data.map((list,idx) => {
+                         return <TestList updateif={this.props.updateif} key={list.id} num={idx+1} id={list.id} text={list.text}/>
+                     })
+
+                 }
+                 </ul>
+                 <div style={{textAlign:'center'}}>
+                     <Button variant="contained"  size={"large"} startIcon={<EditIcon style={{position:'absolute',top:'50%',left:'10px',transform:'translateY(-50%)',fill:'#2196f3'}}/>} style={{position:'relative',padding:'20px 50px'}}>
+                         <Link  style={{position:'absolute',top:'50%',left:'7px',transform:'translateY(-50%)',width:'100%',textDecoration:'none',color:'#4b4b4b',fontWeight:'600'}} to={'/text_fild'}>글쓰기</Link>
+                     </Button>
+                 </div>
+             </div>
             </>
         );
     }

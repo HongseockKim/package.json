@@ -1,69 +1,80 @@
 import React, {Component} from 'react';
-import {withStyles,TextareaAutosize,Button} from '@material-ui/core'
+import {withStyles} from "@material-ui/core/styles";
+import {Button, Paper} from "@material-ui/core";
+import DoneIcon from '@material-ui/icons/Done';
 import axios from "axios";
-
-const styls = {
+const style = {
     inner:{
         maxWidth:'1200px',margin:'20px auto 0 auto',
-        padding:'20px 10px',boxSizing:'border-box',
-        background:'#eceff1',boxShadow:'0px 2px 4px #cfd8dc',borderRadius:'12px',
-        textAlign:'center'
+        background:'#fafafa',padding:'20px 10px',
+        boxSizing:'border-box'
     },
     text_area:{
-        display:'block',
-      resize:'none',width:'90%',minHeight:'330px',padding:'10px',
-        boxSizing: 'border-box',
-        border:'none',margin:'0 auto',borderRadius:'4px',
-        boxShadow: '0px 0px 10px #90a4ae',textAlign: 'left',
-        '&::placeholder':{
-            textAlign:'center',lineHeight:'330px'
-        },
-        '&:focus::placeholder':{
-            color:'transparent'
-        }
+        maxWidth:"900px",margin: "0 auto",
+        height:'300px'
     },
-    btn:{
-        display:'inline-block',
-        width: '130px',padding: '10px 0',
-        margin:'20px auto 0 auto'
+    textin:{
+        width:'100%',height:"100%",resize:'none',border:'none',
+        borderRadius:'8px'
+    },
+    btn_wrap:{
+        background: 'transparent',border:'none',
+        textAlign:'center',padding:'30px 0'
+    },
+    sav_btn:{
+        background:'#2979ff',color:'#fff',
+        fontWeight:'600'
     }
+
 }
 class TextFild extends Component {
-    textAreaRef = React.createRef();
+    textValueInput = React.createRef()
+    state ={
+        text : ""
+    }
+    getTextValue = async () => {
+       const text = this.textValueInput.current.value;
 
+       this.setState({text : [...text]})
+        console.log(text)
 
-    onSubmit = async () =>{
-        console.log('클릭')
-        let text = this.textAreaRef.current.value;
-      let textValue = {
-          text : text
-      };
-        await axios.get('/api/textvalue',{textValue})
-            .then((res)=>{
-                if(res){
-                    console.log('성공')
-                    window.location.href = '/test'
-                }else{
-                    console.log('실패')
+        await  axios({
+            method:'POST',
+            url:'/api/textvalue',
+            data:{
+                text : text
+            }
+        })
+            .then((res) => {
+                console.log(res)
+                if(res.data === true){
+                    this.props.history.push('/test');
                 }
             })
             .catch((err)=>{
                 console.log(err);
+                console.log('에러');
             })
 
     }
+
+
 
     render() {
         const {classes} = this.props;
         return (
             <>
-                <div className={classes.inner}>
-                    <TextareaAutosize  ref={this.textAreaRef} className={classes.text_area}  aria-label="empty textarea" placeholder="글을 작성해주세요" />
-                    <Button onClick={this.onSubmit} className={classes.btn} variant="contained" color="primary">저장</Button>
-                </div>
+                <Paper className={classes.inner} elevation={7}>
+                    <Paper variant={"outlined"} className={classes.text_area}>
+                        <textarea ref={this.textValueInput} className={classes.textin}></textarea>
+                    </Paper>
+                    <Paper variant={"outlined"} className={classes.btn_wrap}>
+                        <Button onClick={this.getTextValue} className={classes.sav_btn} variant={"contained"} startIcon={<DoneIcon/>}>등록하기</Button>
+                    </Paper>
+                </Paper>
             </>
         );
     }
 }
 
-export default withStyles(styls,{withTheme:true}) (TextFild);
+export default withStyles(style,{withTheme:true}) (TextFild);
