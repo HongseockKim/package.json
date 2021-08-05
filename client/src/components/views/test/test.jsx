@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {PureComponent} from 'react';
 import {withStyles} from "@material-ui/core/styles";
 import axios from "axios";
 import TestList from "./testList";
@@ -14,13 +14,14 @@ const styles = {
       maxWidth: '90vw',margin:'0 auto',
     }
 }
-class Test extends Component {
+class Test extends PureComponent {
     state = {
         data :[],
         ready : true
     }
     updateif = () =>{
-        console.log('프롭프롭')
+        console.log('실행')
+        this.getData()
     }
 
     getData = async (newdata) => {
@@ -37,7 +38,6 @@ class Test extends Component {
 
     componentDidUpdate(prevProps, prevState, snapshot) {
         console.log('업데이트')
-
         if(prevState.data.length !== this.state.data.length){
             this.getData()
         }
@@ -54,7 +54,7 @@ class Test extends Component {
                  <ul className={classes.border_list}>
                  {
                      ready ? "loading" : data.map((list,idx) => {
-                         return <TestList updateif={this.props.updateif} key={list.id} num={idx+1} id={list.id} text={list.text}/>
+                         return <TestList updateif={this.updateif} key={list.id} num={idx+1} id={list.id} text={list.text}/>
                      })
 
                  }
