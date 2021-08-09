@@ -39,7 +39,7 @@ class Test extends PureComponent {
     componentDidUpdate(prevProps, prevState, snapshot) {
         console.log('업데이트')
         if(prevState.data.length !== this.state.data.length){
-            this.getData()
+            this.getData();
         }
     }
 

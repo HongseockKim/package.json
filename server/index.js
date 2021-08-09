@@ -47,6 +47,17 @@ app.post('/api/delet',(req,res)=>{
    })
 });
 
+app.post('/api/border_detail',(req,res) =>{
+   let data = req.body.value;
+   const sql = 'select(text) from border_list where id= ?';
+   connection.query(sql,data,function (err,result,fields){
+      if(result.length === 1){
+         res.send(result)
+      }else if(err){
+         console.log(`쿼리 에러 ${err}`);
+      }
+   });
+});
 
 
 app.get('/api/test',function (req,res){
@@ -58,6 +69,9 @@ app.get('/api/test',function (req,res){
       res.send(result)
    })
 });
+
+
+
 app.get('/api/border',function (req,res){
    res.json([
       { id: 1, name: '가' ,text:'월요일입니다',text_2:'화요일입니다',text_3:'수요일입니다',text_4:'목요일입니다',text_5:'금요일입니다',text_6:'토요일입니다',text_7:'일요일입니다'},

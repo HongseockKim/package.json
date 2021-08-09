@@ -15,6 +15,7 @@ import border from './components/views/border/Border';
 import Nav from "./components/views/NavBar/nav";
 import Test from "./components/views/test/test"
 import TextFild from "./components/views/test/text_fild";
+import Dtail from "./components/views/dtail/dtail";
 
 
 function App() {
@@ -39,6 +40,8 @@ function App() {
                         <Route exact path="/test" component={Test}>
                         </Route>
                         <Route exact path="/text_fild" component={TextFild}>
+                        </Route>
+                        <Route exact path="/dtail" component={Dtail}>
                         </Route>
                     </Switch>
                 </div>
